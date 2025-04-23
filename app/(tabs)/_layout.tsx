@@ -1,7 +1,5 @@
-import Feather from "@expo/vector-icons/Feather";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import React from "react";
 
 const TabsLayout = () => {
@@ -16,7 +14,8 @@ const TabsLayout = () => {
           elevation: 0,
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
-          height: 72,
+          height: 90,
+          paddingTop: 10,
         },
       }}
     >
@@ -25,7 +24,7 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ color }) => (
-            <Feather name="home" size={24} color={color} />
+            <Ionicons name="home-outline" size={28} color={color} />
           ),
         }}
       />
@@ -34,7 +33,7 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "Explore",
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="manage-search" size={24} color={color} />
+            <Ionicons name="search-outline" size={28} color={color} />
           ),
         }}
       />
@@ -43,7 +42,7 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "Membership",
           tabBarIcon: ({ color }) => (
-            <Feather name="gift" size={24} color={color} />
+            <Ionicons name="gift-outline" size={28} color={color} />
           ),
         }}
       />
@@ -52,7 +51,7 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "Favourite",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="hearto" size={24} color={color} />
+            <Ionicons name="heart-outline" size={28} color={color} />
           ),
         }}
       />
@@ -61,7 +60,7 @@ const TabsLayout = () => {
         options={{
           tabBarLabel: "Account",
           tabBarIcon: ({ color }) => (
-            <Feather name="user" size={24} color={color} />
+            <Ionicons name="person-circle-outline" size={28} color={color} />
           ),
         }}
       />

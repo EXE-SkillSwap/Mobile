@@ -1,15 +1,17 @@
 import Button from "@/components/ui/button";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   Alert,
+  Pressable,
   SafeAreaView,
   ScrollView,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from "react-native";
+import Animated, { FadeInLeft, FadeInUp } from "react-native-reanimated";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -93,98 +95,109 @@ const Register = () => {
         contentContainerClassName="px-6 py-8"
         keyboardShouldPersistTaps="handled"
       >
-        <View className="mb-8">
-          <Text className="text-3xl font-bold text-gray-800">
-            Tạo tài khoản
-          </Text>
-          <Text className="text-gray-500 mt-2">
-            Tạo mới tài khoản để bắt đầu
-          </Text>
-        </View>
-
+        <Animated.View entering={FadeInUp.delay(400).springify()}>
+          <View className="mb-8">
+            <Text className="text-3xl font-bold text-gray-800">
+              Tạo tài khoản
+            </Text>
+            <Text className="text-gray-500 mt-2">
+              Tạo mới tài khoản để bắt đầu
+            </Text>
+          </View>
+        </Animated.View>
         {/* Email Field */}
-        <View className="mb-4">
-          <Text className="text-gray-700 mb-2 font-medium">Email</Text>
-          <TextInput
-            className={`border-b rounded-lg p-3 placeholder:text-zinc-400 ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            }`}
-            placeholder="Email của bạn"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            value={email}
-            onChangeText={setEmail}
-          />
-          {errors.email ? (
-            <Text className="text-red-500 text-sm mt-1">{errors.email}</Text>
-          ) : null}
-        </View>
-
-        {/* Password Field */}
-        <View className="mb-4">
-          <Text className="text-gray-700 mb-2 font-medium">Mật khẩu</Text>
-          <TextInput
-            className={`border-b rounded-lg p-3 placeholder:text-zinc-400 ${
-              errors.password ? "border-red-500" : "border-gray-300"
-            }`}
-            placeholder="Mật khẩu của bạn"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-          {errors.password ? (
-            <Text className="text-red-500 text-sm mt-1">{errors.password}</Text>
-          ) : null}
-        </View>
-
-        {/* Confirm Password Field */}
-        <View className="mb-6">
-          <Text className="text-gray-700 mb-2 font-medium">
-            Xác nhận mật khẩu
-          </Text>
-          <TextInput
-            className={`border-b rounded-lg p-3 placeholder:text-zinc-400 ${
-              errors.confirmPassword ? "border-red-500" : "border-gray-300"
-            }`}
-            placeholder="Xác nhận mật khẩu của bạn"
-            secureTextEntry
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-          />
-          {errors.confirmPassword ? (
-            <Text className="text-red-500 text-sm mt-1">
-              {errors.confirmPassword}
+        <Animated.View entering={FadeInLeft.delay(400).springify()}>
+          <View className="mb-4">
+            <Text className="text-gray-700 mb-2 font-medium">Email</Text>
+            <TextInput
+              className={`border-b rounded-lg p-3 placeholder:text-zinc-400 ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              }`}
+              placeholder="Email của bạn"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              value={email}
+              onChangeText={setEmail}
+            />
+            {errors.email ? (
+              <Text className="text-red-500 text-sm mt-1">{errors.email}</Text>
+            ) : null}
+          </View>
+        </Animated.View>
+        <Animated.View entering={FadeInLeft.delay(400).springify()}>
+          {/* Password Field */}
+          <View className="mb-4">
+            <Text className="text-gray-700 mb-2 font-medium">Mật khẩu</Text>
+            <TextInput
+              className={`border-b rounded-lg p-3 placeholder:text-zinc-400 ${
+                errors.password ? "border-red-500" : "border-gray-300"
+              }`}
+              placeholder="Mật khẩu của bạn"
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+            />
+            {errors.password ? (
+              <Text className="text-red-500 text-sm mt-1">
+                {errors.password}
+              </Text>
+            ) : null}
+          </View>
+        </Animated.View>
+        <Animated.View entering={FadeInLeft.delay(400).springify()}>
+          {/* Confirm Password Field */}
+          <View className="mb-6">
+            <Text className="text-gray-700 mb-2 font-medium">
+              Xác nhận mật khẩu
             </Text>
-          ) : null}
-        </View>
-
+            <TextInput
+              className={`border-b rounded-lg p-3 placeholder:text-zinc-400 ${
+                errors.confirmPassword ? "border-red-500" : "border-gray-300"
+              }`}
+              placeholder="Xác nhận mật khẩu của bạn"
+              secureTextEntry
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+            />
+            {errors.confirmPassword ? (
+              <Text className="text-red-500 text-sm mt-1">
+                {errors.confirmPassword}
+              </Text>
+            ) : null}
+          </View>
+        </Animated.View>
         {/* Register Button */}
-        <Button
-          onPress={handleRegister}
-          title="Đăng kí"
-          containerStyle="w-full mb-4 bg-indigo-600 py-4 "
-          textStyle="text-white rounded-xl w-full text-center"
-        />
+        <Animated.View entering={FadeInLeft.delay(400).springify()}>
+          <Button
+            onPress={handleRegister}
+            title="Đăng kí"
+            containerStyle="w-full mb-4 bg-indigo-600 py-4 "
+            textStyle="text-white rounded-xl w-full text-center"
+          />
+        </Animated.View>
 
-        {/* Already have account link */}
-
-        <View className="flex-1 justify-between items-center mt-4">
-          <Text className="text-gray-600">
-            Đã có tài khoản?{" "}
-            <Text
-              className="text-indigo-500 font-semibold"
-              onPress={() => router.push("/login")}
-            >
-              Đăng nhập
+        <Animated.View entering={FadeInUp.delay(400).springify()}>
+          <Pressable className="flex-row items-center justify-center px-4">
+            <Text className="text-gray-500 ml-2 text-base font-medium">
+              Bạn đã có tài khoản?{" "}
+              <Text
+                className="text-indigo-600 font-bold"
+                onPress={() => router.push("/login")}
+              >
+                Đăng nhập
+              </Text>
             </Text>
-          </Text>
-          <Text
-            className="text-indigo-800 font-semibold"
+          </Pressable>
+          <Pressable
             onPress={() => router.push("/")}
+            className="flex-row items-center justify-center px-4 mt-8"
           >
-            Quay lại trang chủ
-          </Text>
-        </View>
+            <Ionicons name="arrow-back-circle" size={24} color="gray" />
+            <Text className="text-gray-500 ml-2 text-base font-medium">
+              Quay lại trang chủ
+            </Text>
+          </Pressable>
+        </Animated.View>
       </ScrollView>
     </SafeAreaView>
   );
