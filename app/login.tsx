@@ -17,6 +17,7 @@ import {
   View,
 } from "react-native";
 import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,17 +26,19 @@ const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const router = useRouter();
 
-  const handleLogin = () => {
-    if (!email || !password) {
-      setError("Please fill in all fields");
-      setTimeout(() => setError(""), 3000);
-      return;
-    }
-    if (email === "test" && password === "test") {
-      router.push("/home");
-    } else {
-      setError("Sai thông tin đăng nhập");
-      setTimeout(() => setError(""), 3000);
+  const handleLogin = async () => {
+    const body = {
+      username: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/auth/login", // Replace with your API endpoint
+        body
+      );
+      console.log(response.data);
+    } catch (error) {
+      setError("Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin.");
     }
   };
 
