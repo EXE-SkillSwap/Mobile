@@ -27,16 +27,8 @@ const Login = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
-    const body = {
-      username: email,
-      password: password,
-    };
     try {
-      const response = await axios.post(
-        "http://localhost:8080/auth/login", // Replace with your API endpoint
-        body
-      );
-      console.log(response.data);
+      console.log("Attempting to log in with:", { email, password });
     } catch (error) {
       setError("Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin.");
     }
