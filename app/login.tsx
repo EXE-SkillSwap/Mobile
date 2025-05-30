@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.png";
+import logo from "@/assets/newLogo.png";
 import Button from "@/components/ui/button";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -28,6 +28,16 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
+      if (!email || !password) {
+        setError("Vui lòng nhập đầy đủ thông tin.");
+        return;
+      }
+      setError(""); // Reset error message
+      // Here you would typically make an API call to log in
+      if (email === "userEmail" && password === "userPassword") {
+        router.push("/home");
+        return;
+      }
       console.log("Attempting to log in with:", { email, password });
     } catch (error) {
       setError("Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin.");

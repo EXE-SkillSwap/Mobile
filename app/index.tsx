@@ -1,4 +1,4 @@
-import bgImage from "@/assets/skillswap.png";
+import bgImage from "@/assets/newBanner.png";
 import Button from "@/components/ui/button";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -23,7 +23,7 @@ const App = () => {
           className="flex-1 justify-center"
         >
           <SafeAreaView className="flex-1 mx-5 my-12 justify-between">
-            <View>
+            <View className="mt-10">
               <Animated.View entering={BounceIn.delay(400).springify()}>
                 <Text className="font-semibold text-center text-white text-6xl">
                   Skill Swap
